@@ -1,0 +1,34 @@
+\section{Motivation}
+
+{\em Online Social Networks}, also known as {\em Social Networking Sites} or {\em Social Network Services}, have exploded in popularity in the last years.
+Over the past decade, the use of Facebook and Twitter, just to mention two of the most popular ones, has increased at the point of becoming ubiquitous.
+%Sites like Facebook, Twitter and LinkedIn are in the top 20 most visited Web sites in the world~\cite{alexaranking}.
+Nearly 70\% of the Internet users are active on social networks as shown by a recent survey \cite{SNSuse}, and this number is increasing.
+A number of studies show that the number of privacy breaches is keeping pace with this growth \cite{MJB12spse+,JEM12fpc,YKBA11afps+,MJB11fosn+}.
+Very often users' requirements are far from the privacy guarantees offered by social networks  which do not meet their expectations. The reasons for that are multifold, ranging from the users' lack of knowledge on the underlying technology to fundamental technical issues of the technology itself. Just to mention a few:
+\begin{inparaenum}[i)]
+\item Many users are not aware of the implications on sharing something in social networks, and do not foresee the consequences until it is too late;
+\item Most users do not take the time to check/change the default privacy settings, which are usually quite permissive;
+\item The privacy settings offered by existing social networks are limited and are not fine-grained enough as to capture desirable privacy policies;
+\item Side knowledge and indirect disclosure, e.g.~through aggregation of information from different sources, is difficult to foresee and detect;
+\item Privacy settings are static (they are not time- nor context-dependent), thus not being able to capture the possibility of defining repetitive or recurrent privacy policies;
+\item There currently are no good warning mechanisms informing users of the potential breach of privacy, before a given action is taken.
+\end{inparaenum}
+
+%Many desirable privacy policies can already be  enforced by social networks; for instance, in Facebook users can state polices like
+%  ``Only my friends can see a  post on my timeline'' or
+%  ``Whenever I am tagged, the picture should not be shown on my
+%  timeline unless I approve it''. Many other policies, however, are not
+%  possible to enforce, although they might be important from a user's privacy
+%  perspective. Again, using Facebook as an example, users can not
+%  specify  privacy policies like ``I do not want be tagged
+%  in pictures by anyone other than myself'', or ``Nobody apart from myself
+%  can know my child's location''. Despite the fact that social networks put more and more effort in
+%  improving their privacy mechanisms and offering  users  better
+%  control over their information,  yet, the increasing amount of
+%  personal data that social networks have to deal with and the continuous changes in the
+%  privacy policies  make this task cumbersome and hard to accomplish.
+
+We are here only concerned with the fact that the privacy settings currently available in social networks are not suitable for capturing the {\em dynamic} aspect of privacy policies. That is, privacy policies should take into account that the networks {\it evolve}, as well as the privacy preferences of the users. The privacy policy may ``evolve'' due to explicit changes done by the users (e.g., a user may change the audience of an intended post to make it more restrictive), or because the privacy policy is dynamic {\it per se}.Examples of the latter, are for instance: {\it ``My boss cannot know my location between 20:00-23:59 every day''}, or {\it ``Only my friends can see the pictures I am tagged in from Fridays at 20:00 till Mondays at 08:00''}. These are recurrent policies triggered by some time events (``every day between 20:00 and 23:59'', and ``every week from Friday at 20:00 till Monday at 08:00''). Other policies may be activated or deactivated by certain events: {\it ``Only up to 3 posts, disclosing my location, are allowed per day in my timeline''}. We call this type of privacy policies {\em evolving privacy policies}.
+
+%% Fig.~\ref{fig:recurrentpolicy} provides a generic view of the policies we interested in this paper. The long arrow represents time and the white rectangles are time windows where a policy $\psi$ must hold. The length of the rectangles is the duration of the policy, for instance, from 20:00 to 23:59. The spaces between rectangles are time intervals where the policy is not active. The length of this spaces is determine by the recurrence parameter, e.g., every day, week, year and so forth.
