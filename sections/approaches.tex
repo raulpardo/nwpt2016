@@ -1,11 +1,56 @@
 \section{Approaches to Evolving Privacy Policies}
 
-We have initiated the development of two different formalisms to tackle the problem of evolving privacy policies in social networks. These are
-\begin{inparaenum}[i)]
-\item policy automata~\cite{PCPS16aaeppsn}
-\item \tfppf~\cite{PKSS16sepposn}
-\end{inparaenum}
+We have initiated the development of two different formalisms to tackle the problem of evolving privacy policies in social networks. These are: {\em policy automata}~\cite{PCPS16aaeppsn} and \tfppf~\cite{PKSS16sepposn}.
 
 \subsection{Policy automata}
 
+Most (or all) social networks include a static privacy policy language in which users can express policies such as ``Nobody can see my location'' or ``Only friends or friends can send me a friend request'', i.e., static policies that do not change or evolve as events happen in the system.
+
+In order to describe evolving policies, we take a static policy language for social networks and use it to describe temporal snapshots of the policies in force. We then use an automaton to describe how a policy is discarded and another enforced, depending on the events taking place e.g. user actions or system events.
+
+\begin{example}
+
+Consider the evolving policy ``My supervisor cannot see my pictures during the weekend''. Let $\ff{\textit{supervisor}}{\textit{see-pictures}}$ represent the static policy ``My supervisor cannot see my pictures''. The following policy automaton models the policy:
+
+\centerline{\scalebox{1.0}{
+    \scriptsize
+    \begin{tikzpicture}[every text node part/.style={align=center},on grid,auto, minimum height=5ex]
+      \node (s_0) [initial, initial, rectangle, rounded corners, draw, minimum width=85pt]%
+            {~};
+      \node (s_1) [rectangle, rounded corners, draw,minimum width=85pt]%
+            [right = 7cm of s_0]%
+            {$\ff{\textit{supervisor}}{\textit{see-pictures}}$};
+            %%{~};
+      \path[->] [bend left = 5] (s_1) edge node {$\textit{monday}$} (s_0);
+      \path[->] [bend left = 5] (s_0) edge node {$\textit{saturday}$} (s_1);
+    \end{tikzpicture}
+}}
+
+The automaton is composed by two states. An initial state in which no static policies need to be enforced and another state in which the policy $\ff{\textit{supervisor}}{\textit{see-pictures}}$ is activated. The transitions are labelled with events reported by the social network. The outgoing transition in the initial state is triggered when the social network reports that Saturday started the automaton. At this moment, the automaton reports to the social network that the policy needs to be activated. Similarly, when Monday starts and it is communicated to the automaton, it updates again its state and the policy is disabled.
+\end{example}
+
+Policy automata can be converted to \emph{Dynamic Automata with Timers and Events} (DATEs) \cite{CPS08lrt} which are symbolic automata aimed at representing monitors and have the compilation tool \larva. We implemented the link between \larva~monitors (implementing our policy automata) and the open-source social network Diaspora*~\cite{XXX}, thus providing support for some evolving privacy policies~\cite{linktodiasporaourrepo}.
+
 \subsection{\tfppf}
+
+\tfppf~stands for {\em Temporal First-Order Privacy Policy Framework}.
+It is a formal framework based on epistemic logic~\cite{FHM+95rk} to express and reason about {\em dynamic} and {\em recurrent} privacy policies that are activated or deactivated by context (events) or time. We take \fppf~\cite{PS14fpp} as a point of departure. \fppf~is a formal framework for privacy policies which consists of:
+i) A generic social network model (SNM);
+ii) A knowledge-based logic (\kbl) to reason about the social network and privacy policies;
+iii) A formal language (\ppl) to describe privacy policies (based on the previous logic).
+\fppf~is a an expressive privacy policy framework able to represent all privacy policies for social networks like Facebook and Twitter, and beyond~\cite{PS14fpp}. Though rich in what concerns its expressiveness, \fppf~is not suitable to express evolving privacy policies, in the sense discussed in Section~\ref{sec:motivation}. Therefore, \tfppf~was extended with the following components:
+\begin{enumerate}
+\item \textbf{Traces of SNMs.} In \fppf~we checked whether a policy is in conformance with an SNM, which is a static picture of the system at a moment in time. For evolving policies it is not enough. We need to consider all the SNMs included in the time-frame in which the policy must hold. Therefore, the satisfaction relation for \tkbl~and the conformance relation for \tppl~both take as a parameter a trace of SNMs. A trace of SNMs is just a sequence of pairs containing an SNM and a timestamp, which indicates the state of the system and the point in time.
+  
+\item \textbf{Temporal modalities in \tkbl.} The knowledge based logic, \kbl, also needed to be extended. \kbl~is a first order logic which includes the knowledge modality $K$ from epistemic logic. Using the logic we can reason about what the users know, who are their relationships and what they are permitted to do. However, it was not syntactically possible to specify that a given properties always (\al) holds in a trace or eventually will hold (\ev). Moreover, the conformance relation for privacy policies depends on \tkbl's satisfaction relation and as we describe below it requires a certain policy to always hold for a given trace.
+  
+\item \textbf{Time fields in \tppl.} In \ppl~(the untimed version of the privacy policy language) we were able to express all privacy policies of Facebook and Twitter~\cite{PS14fpp}, and we conjecture that the language is more expressive that the access control protection present in social networks~\cite{BFS+12rbaceehl,F11rbacppl}. In \tppl, we add a time field where we express the starting time of the privacy policies, i.e., the moment in time from which it is active; the durantion of the policy, for how long will it be activated, for instance, 6 hours, a day, 10 minutes and so on; finally, the recurrence of the policy, e.g., monthly, daily, yearly, every other day, etc.
+
+  \begin{example}
+  Take as an example the policy we modelled using policy automata ``My supervisor cannot see my pictures during the weekend''. First, let us model the static part of the policy, i.e., ``My supervisor cannot see my pictures''. We can use the untimed \ppl~for it,
+  $$ \policy{\forall \eta. \neg K_{\mathit{supervisor(me)}} picture(\eta)}{\mathit{me}}$$
+  where $\eta \in \nat$ is just an index for pictures, $\ag$ is the set of all users in the social network, $\mathit{me} \in \ag$ is a user and $\mathit{supervisor} : \ag \rightarrow \ag$ is a function returning the supervisor of a given user. $K_{\mathit{supervisor(me)}} picture(\eta)$ reads as ``My supervisor knows picture($\eta$)'', since the formula is negated we state the desired policy. In order to transform this policy into an evolving one we need to add the temporal part, i.e., ``during the weekend''. \tppl~offers support for it. Assuming that we activate the policy on Saturday 27-08-2016 (the granularity of the timestamp can be as precise as needed), the policy is written as follows
+  $$\policy{\forall \eta. \neg K_{\mathit{supervisor(me)}} picture(\eta)}{\mathit{me}}^{[ ~ \text{27-08-2016} ~ \mid ~ \text{2 days} ~ \mid ~ \text{Weekly} ~ ]}$$
+  Concretly, the format of the time field of \tppl~privacy policies is $[\text{start} $ $\mid $ $\text{duration} \mid \text{recurrence} ]$. Thus, the previous must be enforced from 27-08-2016 (which is Saturday) during 2 days (the weekend) and weekly (every weekend).
+    \end{example}
+\end{enumerate}
