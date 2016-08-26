@@ -1,0 +1,208 @@
+%!TEX root = formats16.tex
+\newcommand{\ppf}{\ensuremath{\mathcal{PPF}}}
+\newcommand{\ppi}[1]{\ensuremath{\mathcal{FPPF_{\scriptsize #1}}}}
+\newcommand{\ppd}[1]{\ensuremath{\mathcal{FPPF^D_{\scriptsize #1}}}}
+
+\newcommand{\fppf}{\ensuremath{\mathcal{FPPF}}}
+\newcommand{\fppi}[1]{\ensuremath{\mathcal{FPPF_{\scriptsize #1}}}}
+\newcommand{\fppd}[1]{\ensuremath{\mathcal{FPPF^D_{\scriptsize #1}}}}
+
+\newcommand{\sn}{\ensuremath{\mathcal{SN}}}
+\newcommand{\ppl}{\ensuremath{\mathcal{PPL_{SN}}}}
+\newcommand{\kbl}{\ensuremath{\mathcal{KBL_{SN}}}}
+\newcommand{\sat}{\ensuremath{\models}}
+\newcommand{\der}{\ensuremath{\vdash}}
+\newcommand{\conf}{\ensuremath{\models_C}}
+\newcommand{\pval}{\ensuremath{\nu}}
+\newcommand{\poval}{\ensuremath{\pi}}
+\newcommand{\propSet}{\ensuremath{\mathcal{P}}}
+\newcommand{\poSet}{\ensuremath{\Pi}}
+\newcommand{\conSet}{\ensuremath{\mathcal{C}}}
+\newcommand{\struct}{\ensuremath{\mathcal{A}}}
+
+\newcommand{\inSet}{\ensuremath{\mathcal{I}}}
+\newcommand{\policy}[2]{\ensuremath{\llbracket #1 \rrbracket_{#2}}}
+\newcommand{\kb}{\ensuremath{\mathit{KB}}}
+\newcommand{\cl}{\ensuremath{\mathit{Cl}}}
+\newcommand{\tcl}{\ensuremath{\mathit{Cl}_t}}
+\newcommand{\evtSet}{\ensuremath{\mathit{EVT}}}
+\newcommand{\assumSet}{\ensuremath{\mathbb{A}}}
+\newcommand{\restrSet}{\ensuremath{\mathbb{RE}}}
+
+\newcommand{\agi}[1]{\ensuremath{\mathit{Ag}_{\mathcal{#1}}}}
+\newcommand{\structi}[1]{\ensuremath{\struct_{\mathcal{#1}}}}
+\newcommand{\kbii}[1]{\ensuremath{\kb_{\mathcal{#1}}}}
+\newcommand{\pii}[1]{\ensuremath{\pi_{\mathcal{#1}}}}
+\newcommand{\propSeti}[1]{\ensuremath{\mathcal{P_{\mathcal{#1}}}}}
+\newcommand{\poSeti}[1]{\ensuremath{\Pi_{\text{\mathcal{#1}}}}}
+\newcommand{\conSeti}[1]{\ensuremath{\mathcal{C}_{\mathcal{#1}}}}
+%\newcommand{\kbi}[1]{\ensuremath{KB}_{\text{\mathcal{#1}}}}
+\newcommand{\assumSeti}[1]{\ensuremath{\mathbb{A}_{\mathcal{#1}}}}
+\newcommand{\restrSeti}[1]{\ensuremath{\mathbb{RE}_{\mathcal{#1}}}}
+\newcommand{\actSeti}[1]{\ensuremath{A_{\mathcal{#1}}}}
+
+
+\newcommand{\wkbl}{\ensuremath{\mathcal{F_{KBL}}}}
+\newcommand{\wkblk}{\ensuremath{\mathcal{F_{KBL}^K}}}
+\newcommand{\wkblp}{\ensuremath{\mathcal{F_{KBL}^P}}}
+\newcommand{\wppl}{\ensuremath{\mathcal{F_{PPL}}}}
+\newcommand{\wpplp}{\ensuremath{\mathcal{F_{PPL}^\mathbb{P}}}}
+
+\newcommand{\wpplc}{\ensuremath{\mathcal{F_{PPL}^C}}}
+\newcommand{\wpplr}{\ensuremath{\mathcal{F_{PPL}^R}}}
+
+\newcommand{\lts}{\ensuremath{\mathcal{LTS_{SN}}}}
+\newcommand{\actSet}{\ensuremath{\Sigma}}
+\newcommand{\etal}{\mbox{\emph{et al.\ }}}
+\newcommand{\trace}{\ensuremath{\mathrm{\sigma}}}
+\newcommand{\timestampSet}{\ensuremath{\mathbb{T}}}
+\newcommand{\tautime}{\ensuremath{t^{\top}}}
+
+\newcommand{\gs}[1]{{\color{red}[#1] GS}}
+\newcommand{\rp}[1]{{\color{green}[#1] RP}}
+\newcommand{\ik}[1]{{\color{blue}[#1] IK}}
+\newcommand{\mb}[1]{{\color{magenta}[#1] MB}}
+
+\newcommand{\nat}{\ensuremath{\mathbb{N}}}
+
+\newcommand{\sni}[1]{\ensuremath{\mathcal{SN_{#1}}}}
+\newcommand{\evtSeti}[1]{\ensuremath{\evtset_{\mathcal{#1}}}}
+\newcommand{\ltsi}[1]{\ensuremath{\mathcal{LTS^{#1}_{SN}}}}
+
+% KD45 axiomatisation macros
+\newcommand{\kd}[2]{\ensuremath{\text{KD45}^{#1}_{#2}}}
+\newcommand{\kdcd}[1]{\ensuremath{\text{KD45}^{CD}_{#1}}}
+\newcommand{\kdcdn}{\ensuremath{\text{KD45}^{CD}_{n}}}
+
+%S5
+\newcommand{\sfivecdn}{\ensuremath{\text{S5}^{CD}_{n}}}
+
+% Kripke models
+\newcommand{\mi}[1]{\ensuremath{\mathcal{M}^{#1}}}
+\newcommand{\m}{\ensuremath{\mi{}}}
+\newcommand{\mr}{\ensuremath{\mi{r}}}
+%% \newcommand{\m}[2]{\ensuremath{\mathcal{M}^{#1}_{#2}}}
+\newcommand{\meltn}{\ensuremath{\mathcal{M}^{elt}_n}}
+\newcommand{\melt}{\ensuremath{\mathcal{M}^{elt}}}
+\newcommand{\langd}{\ensuremath{\mathcal{L}^{D}}}
+\newcommand{\langc}{\ensuremath{\mathcal{L}^{C}}}
+\newcommand{\langcd}{\ensuremath{\mathcal{L}^{CD}}}
+\newcommand{\lang}{\ensuremath{\mathcal{L}}}
+\newcommand{\aguni}{\ensuremath{\mathcal{AU}}}
+
+% First Order Epistemic Logic
+\newcommand{\voca}{\ensuremath{\mathcal{T}}}
+%% \newcommand{\dom}{\ensuremath{\mathit{dom(\mathcal{A})}}}
+\newcommand{\dom}{\ensuremath{\mathit{D}_o}}
+\newcommand{\domind}{\ensuremath{\mathcal{D}}}
+\newcommand{\kripkeval}{\ensuremath{\pi}}
+\newcommand{\accrelation}{\ensuremath{\mathcal{K}}}
+\newcommand{\valu}{\ensuremath{\mathit{V}}}
+
+% SNM Variables
+\newcommand{\snv}{\ensuremath{\mathit{SN}}}
+\newcommand{\alice}{\ensuremath{\mathit{Alice}}}
+\newcommand{\bob}{\ensuremath{\mathit{Bob}}}
+\newcommand{\charlie}{\ensuremath{\mathit{Charlie}}}
+\newcommand{\audience}{\ensuremath{\mathit{Audience}}}
+\newcommand{\owner}{\ensuremath{\mathit{owner}}}
+\newcommand{\loc}{\ensuremath{\mathit{loc}}}
+\newcommand{\location}{\ensuremath{\mathit{location}}}
+\newcommand{\post}{\ensuremath{\mathit{post}}}
+\newcommand{\atwork}{\ensuremath{\mathit{atwork}}}
+\newcommand{\home}{\ensuremath{\mathit{home}}}
+\newcommand{\textmath}{\ensuremath{\mathit{text}}}
+\newcommand{\colleague}{\ensuremath{\mathit{colleague}}}
+\newcommand{\Friendship}{\ensuremath{\mathit{Friendship}}}
+\newcommand{\Blocked}{\ensuremath{\mathit{Blocked}}}
+\newcommand{\friendRequest}{\ensuremath{\mathit{friendRequest}}}
+\newcommand{\friend}{\ensuremath{\mathit{friend}}}
+\newcommand{\friends}{\ensuremath{\mathit{friends}}}
+\newcommand{\followers}{\ensuremath{\mathit{followers}}}
+\newcommand{\Friend}{\ensuremath{\mathit{Friend}}}
+\newcommand{\checkin}{\ensuremath{\mathit{checkin}}}
+\newcommand{\newsfeed}{\ensuremath{\mathit{opennewsfeed}}}
+\newcommand{\tu}{\ensuremath{\mathit{tu}}}
+\newcommand{\tweet}{\ensuremath{\mathit{tweet}}}
+\newcommand{\tweetinfo}{\ensuremath{\mathit{TweetInfo}}}
+\newcommand{\age}{\ensuremath{\mathit{age}}}
+
+\newcommand{\ag}{\ensuremath{\mathit{Ag}}}
+\newcommand{\phisnv}{\ensuremath{\phi_{\snv}}}
+\newcommand{\mphisnv}{\ensuremath{\phi^{m}_{\snv}}}
+\newcommand{\Phisnv}{\ensuremath{\Phi_{\snv}}}
+\newcommand{\mPhisnv}{\ensuremath{\Phi^{m}_{\snv}}}
+
+% Canonical model functions
+\newcommand{\sub}{\ensuremath{\mathit{Sub}}}
+\newcommand{\subplus}{\ensuremath{\mathit{Sub}^{+}}}
+\newcommand{\con}{\ensuremath{\mathit{Con}}}
+
+
+
+% Functions over sets of formulae such as knowledge bases
+\newcommand{\kt}{\ensuremath{\mathcal{KT}}}
+\newcommand{\snmc}{\ensuremath{\mathcal{SC}}}
+\newcommand{\ums}{\ensuremath{\mathcal{UMS}}}
+\newcommand{\ktm}{\ensuremath{\mathcal{KT}^{m}}}
+\newcommand{\dkb}{\ensuremath{\mathit{DKB}}}
+\newcommand{\mc}{\ensuremath{\mathcal{MC}}}
+\newcommand{\kbi}{\ensuremath{\kb_i}}
+\newcommand{\clkbi}{\ensuremath{\cl(\kbi)}}
+\newcommand{\clkb}[1]{\ensuremath{\cl(\kb_{#1})}}
+\newcommand{\tclkbi}{\ensuremath{\tcl(\kbi)}}
+\newcommand{\tclkb}[1]{\ensuremath{\tcl(\kb_{#1})}}
+
+\newcommand{\pr}{\ensuremath{\mathit{pr}}}
+\newcommand{\co}{\ensuremath{\mathit{co}}}
+\newcommand{\ac}{\ensuremath{\mathit{ac}}}
+
+% Axiomatisations
+\newcommand{\kaxioma}{\textbf{K}}
+\newcommand{\kdaxioma}{\textbf{KD}}
+\newcommand{\kdfouraxioma}{\textbf{KD4}}
+\newcommand{\kdfourfiveaxioma}{\textbf{KD45}}
+\newcommand{\sfouraxioma}{\textbf{S4}}
+\newcommand{\sfiveaxioma}{\textbf{S5}}
+
+% Timed FPPF -- Ivana's macros
+\newcommand*{\tfppf}{\ensuremath{\mathcal{TFPPF}}}
+\newcommand*{\tkbl}{\ensuremath{\mathcal{TKBL_{SN}}}}
+\newcommand*{\ftkbl}{\ensuremath{\mathcal{F_{TKBL}}}}
+\newcommand*{\tppl}{\ensuremath{\mathcal{TPPL_{SN}}}}
+\newcommand*{\ftppl}{\ensuremath{\mathcal{F_{TPPL}}}}
+\newcommand*{\ftpplr}{\ensuremath{\mathcal{F_{TPPL}^R}}}
+\newcommand*{\fancy}[1]{\ensuremath{\mathcal{#1}}}
+
+%%% Privacy policy shortcuts
+% - \pol{#1}{#2} creates a privacy policy of agent #2 with content #1
+% - \when{#1}{#2} renders the first two time fields (start, duration) of a
+%   policy
+% - \whenf{#1}{#2} renders the first time field (start) of a policy
+% - \whenrec{#1}{#2}{#3} renders all three fields of a policy, i.e., including
+%   the optional recurrence field
+% - \polneg a \polimp are the two basic types of privacy policies used in
+%   examples and the conformance relation
+\newcommand*{\pol}[2]{\ensuremath{\llbracket #1 \rrbracket_\text{#2}}}
+\newcommand*{\when}[2]{\text{[ #1 \textbar{} #2 ]}}
+\newcommand*{\whenf}[1]{\text{[ #1 ]}}
+\newcommand*{\whenrec}[3]{\text{[ #1 \textbar{} #2 \textbar{} #3 ]}}
+\newcommand*{\slice}[2]{{\ensuremath{[#1\;..\;#2]}}}
+\newcommand*{\polneg}[1][a]{\pol{\neg \phi}{#1}}
+\newcommand*{\polimp}[1][a]{\pol{\phi \then \neg \psi}{#1}}
+
+%%% Logic and grammar shortcuts
+\newcommand*{\then}{\ensuremath{\implies}}
+\newcommand*{\al}{\ensuremath{\Box}}
+\newcommand*{\ev}{\ensuremath{\Diamond}}
+\newcommand*{\ter}[1]{\ensuremath{\text{ \textbf{#1} }}}
+\newcommand*{\eps}{\ensuremath{\varepsilon}}
+\newcommand*{\tuple}[1]{\ensuremath{\langle #1 \rangle}}
+
+
+%%% Some timed sets
+\newcommand{\tsn}{\ensuremath{\mathcal{TSN}}}
+\newcommand{\tsnv}{\ensuremath{\mathit{TSN}}}
+
+\newcommand{\wftraceset}{\ensuremath{\fancy{S}_\trace}}
+

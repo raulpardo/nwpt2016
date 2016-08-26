@@ -1,0 +1,60 @@
+\documentclass{easychair}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx,url}
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{dsfont,latexsym,longtable,epsfig,color}
+\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{mathpartir}
+%Vector packages
+\usepackage{esvect}
+\usepackage{cancel}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage{times}
+\usepackage{microtype}
+
+\newcommand{\code}{\texttt}
+
+\newcommand{\larva}{{\sc Larva}}
+\input{macros}
+
+%Using varphi instead of phi
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Enforcement and Specification of Evolving Privacy Policies for Social Networks}
+%\titlerunning{Enforcement and Specification of Evolving Privacy Policies for Social Networks}
+
+\author{Ra\'ul Pardo}
+%\authorrunning{R. Pardo}
+
+\institute{Deptartment of Computer Science and Engineering, \\
+Chalmers University of Technology, Sweden. \\
+\email{pardo@chalmers.se}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/fppf}
+\input{sections/enforcement}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}
